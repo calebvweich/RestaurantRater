@@ -2,15 +2,17 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/header/header'
 import Sidebar from './components/sidebar/sidebar'
-import RestTile from './components/restTile/restTile'
+import RestContainer from './components/restContainer/restContainer'
 
 function App() {
 
   return (
     <>
     <Header />
-    <Sidebar />
-    <RestTile />
+    <div className="body">
+      <Sidebar />
+      <RestContainer />
+    </div>
     </>
   )
 }
