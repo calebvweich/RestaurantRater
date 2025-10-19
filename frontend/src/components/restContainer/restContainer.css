@@ -1,0 +1,10 @@
+.restContainer {
+  background: #5f5f5f;
+  width: 74vw;
+  padding: 2%;
+}
+.restGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -1,3 +1,6 @@
 .body {
   display: flex;
+  width: 96vw;
+  padding: 2vw;
+  gap: 2vw;
 }
