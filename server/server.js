@@ -3,6 +3,7 @@ import cors from "cors"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import rest from "./schemas/restaurant.js"
+import { auth } from "./auth/auth.js";
 
 dotenv.config();
 const app = express();

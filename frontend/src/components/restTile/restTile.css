@@ -4,3 +4,6 @@
   margin: 1%;
   width: 21%;
 }
+img {
+  max-width: 98%;
+}

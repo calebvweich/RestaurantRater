@@ -22,7 +22,7 @@ function App() {
     <Header />
     <div className="body">
       <Sidebar />
-      <RestContainer />
+      <RestContainer restList={restList} />
     </div>
     </>
   )
