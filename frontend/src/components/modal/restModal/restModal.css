@@ -1,0 +1,59 @@
+.restModalContainer {
+  padding: 4%;
+  height: 100%;
+}
+.restModalHeader {
+  height: 10%;
+  padding-bottom: 2%;
+  h1 {
+    font-size: 32px;
+    margin: 0;
+  }
+}
+.restModalImgCarousel {
+  background: #5f5f5f;
+  display: flex;
+  place-items: center;
+  .carouselArrow {
+    width: 5%;
+    text-align: center;
+  }
+}
+.restModalImage {
+  width: 90%;
+}
+.restModalSection {
+  font-size: 14px;
+  display: flex;
+  div {
+    padding: 2%;
+    border: 2px solid #242424;
+    place-items: center;
+  }
+}
+.restModalDesc {
+  width: 66%;
+  font-size: 16px;
+}
+.restModalOpen {
+  width: 26%;
+}
+.restModalOptions {
+  width: 48%;
+  div {
+    width: 100%;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.restModalContact {
+  width: 48%;
+}
+.review {
+  width: 100%;
+  textarea {
+    width: 99%;
+    min-height: 80px;
+  }
+}

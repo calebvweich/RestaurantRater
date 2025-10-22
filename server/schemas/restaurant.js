@@ -9,14 +9,15 @@ const restSchema = new mongoose.Schema({
   },
   phone: String,
   website: String,
-  image: String,
   gallery: [String],
   description: String,
   categories: [String],
   priceRange: String,   // "£", "££", "£££"
-  takeaway: Boolean,
-  delivery: Boolean,
-  reservations: Boolean,
+  options: {
+    takeaway: Boolean,
+    delivery: Boolean,
+    reservations: Boolean,
+  },
   openingHours: Object,
   ratings: {
     up: Number,
