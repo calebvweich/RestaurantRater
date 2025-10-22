@@ -15,7 +15,7 @@ export default function RestTile({ r }) {
     <>
     <div className="restTile" onClick={() => setDialogOpen(true)}>
       {r.name}
-      <img src={r.image} />
+      <img src={r.gallery[0]} />
       <div>{r.address}</div>
       <div className="ratings">
         <button onClick={(e) => handleRateUp(e)}><MdOutlineThumbUp />{r.ratings.up}</button>
