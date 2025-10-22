@@ -1,0 +1,17 @@
+.dialogBackground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #41414191;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialogContainer {
+  min-width: 60%;
+  min-height: 90%;
+  background: #929292;
+}
