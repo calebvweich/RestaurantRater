@@ -7,3 +7,11 @@
     max-width: 98%;
   }
 }
+.ratings {
+  display: flex;
+  justify-content: space-between;
+}
+.restTileName {
+  font-size: 20px;
+  margin: 0;
+}

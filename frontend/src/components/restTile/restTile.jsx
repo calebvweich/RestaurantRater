@@ -14,11 +14,12 @@ export default function RestTile({ r }) {
   return (
     <>
     <div className="restTile" onClick={() => setDialogOpen(true)}>
-      {r.name}
+      <p className="restTileName">{r.name}</p>
       <img src={r.gallery[0]} />
       <div>{r.address}</div>
       <div className="ratings">
         <button onClick={(e) => handleRateUp(e)}><MdOutlineThumbUp />{r.ratings.up}</button>
+        <p>{r.ratings.up > 0 ? (r.ratings.up / (r.ratings.up + r.ratings.down) * 100) : 0}%</p>
         <button onClick={(e) => handleRateDown(e)}><MdOutlineThumbDown />{r.ratings.down}</button>
       </div>
     </div>
