@@ -20,11 +20,11 @@ function App() {
 
   async function getRestaurants() {
     const res = await getRestList();
-    setRestList(res)
+    setRestList(res);
   }
 
   useEffect(() => {
-    getRestaurants()
+    getRestaurants();
   }, [])
   
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
     <Header token={token} logout={logout} validate={login} />
     <div className="body">
       <Sidebar />
-      <RestContainer restList={restList} />
+      <RestContainer restList={restList} token={token} />
     </div>
     </>
   )

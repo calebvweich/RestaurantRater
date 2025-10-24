@@ -3,7 +3,7 @@ import { MdOutlineThumbDown } from "react-icons/md";
 import "./restTile.css"
 import { useState } from "react";
 import RestModal from "../modal/restModal/restModal";
-export default function RestTile({ r }) {
+export default function RestTile({ r, token }) {
   const [dialogOpen, setDialogOpen] = useState(false)
   function handleRateUp(e) {
     e.stopPropagation();
@@ -27,6 +27,7 @@ export default function RestTile({ r }) {
       <RestModal
         close={() => setDialogOpen(false)}
         info={r}
+        token={token}
       />
     }
     </>

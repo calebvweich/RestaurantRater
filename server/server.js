@@ -7,6 +7,7 @@ import { auth } from "./auth/auth.js";
 import User from "./schemas/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import Review from "./schemas/review.js";
 
 dotenv.config();
 const app = express();
@@ -70,6 +71,43 @@ app.post("/login", async (req, res) => {
     res.json({ token });
   } catch (err) {
     res.status(500).json({ msg: err.message });
+  }
+});
+
+app.post("/review/new/:restId", auth, async (req, res) => {
+  try {
+    const { restId } = req.params;
+    const { text } = req.body;
+    const newReview = new Review({ restaurantId: restId, userId: req.user.id, text: text });
+    await newReview.save();
+
+    res.status(200);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Get restaurant reviews
+app.get("/restaurant/:restId/reviews", async (req, res) => {
+  try {
+    const { restId } = req.params;
+    const restReviews = await Review.find({ restId }).populate("userId", "name");
+
+    res.status(200).json(restReviews);
+  } catch (err) {
+    res.status(500).json({ msg: err.message })
+  }
+});
+
+// Get user reviews
+app.get("/user/:userId/reviews", auth, async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userReviews = await Review.find({ userId }).populate("restaurantId", "name");
+    
+    res.status(200).json(userReviews);
+  } catch (err) {
+    console.log(err);
   }
 });
 

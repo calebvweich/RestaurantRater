@@ -22,8 +22,7 @@ const restSchema = new mongoose.Schema({
   ratings: {
     up: Number,
     down: Number
-  },
-  reviews: [mongoose.Schema.Types.ObjectId]
+  }
 });
 
 export default mongoose.model("Rest", restSchema);

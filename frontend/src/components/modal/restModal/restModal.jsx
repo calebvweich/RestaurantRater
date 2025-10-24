@@ -3,7 +3,7 @@ import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import Modal from "../modal"
 import "./restModal.css"
-export default function RestModal({ close, info }) {
+export default function RestModal({ close, info, token }) {
   return (
     <Modal close={close}>
       <div className="restModalContainer" onClick={(e) => e.stopPropagation()}>
