@@ -6,7 +6,17 @@ import RestContainer from './components/restContainer/restContainer'
 import { getRestList } from './api'
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [restList, setRestList] = useState({})
+  
+  function logout() {
+    localStorage.clear();
+    setToken(null);
+  }
+
+  function login(token) {
+    setToken(token);
+  }
 
   async function getRestaurants() {
     const res = await getRestList();
@@ -16,10 +26,18 @@ function App() {
   useEffect(() => {
     getRestaurants()
   }, [])
+  
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
 
   return (
     <>
-    <Header />
+    <Header token={token} logout={logout} validate={login} />
     <div className="body">
       <Sidebar />
       <RestContainer restList={restList} />

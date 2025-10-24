@@ -1,0 +1,26 @@
+.loginContainer {
+  width: 40%;
+  height: 50%;
+  background: #929292;
+  overflow: auto;
+}
+.loginHeader {
+  display: flex;
+  font-size: 20px;
+  justify-content: space-around;
+  height: 15%;
+  border-bottom: 2px solid #5f5f5f;
+}
+.loginForm {
+  height: 70%;
+  width: 80%;
+  padding: 10% 10% 0;
+  font-size: 14px;
+  input {
+    width: 95%;
+    padding: 2.5%;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+  }
+}

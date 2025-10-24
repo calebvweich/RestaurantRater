@@ -10,9 +10,3 @@
   align-items: center;
   justify-content: center;
 }
-.dialogContainer {
-  max-width: 60%;
-  max-height: 90%;
-  background: #929292;
-  overflow: auto;
-}

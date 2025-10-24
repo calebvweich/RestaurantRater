@@ -1,6 +1,8 @@
 .restModalContainer {
-  padding: 4%;
-  height: 100%;
+  width: 60%;
+  height: 90%;
+  background: #929292;
+  overflow: auto;
 }
 .restModalHeader {
   height: 10%;

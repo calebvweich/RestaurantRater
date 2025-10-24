@@ -6,7 +6,7 @@ import "./restModal.css"
 export default function RestModal({ close, info }) {
   return (
     <Modal close={close}>
-      <div className="restModalContainer">
+      <div className="restModalContainer" onClick={(e) => e.stopPropagation()}>
         <div className="restModalHeader">
           <h1>{info.name}</h1>
         </div>
