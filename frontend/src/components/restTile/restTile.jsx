@@ -1,26 +1,35 @@
-import { MdOutlineThumbUp } from "react-icons/md";
-import { MdOutlineThumbDown } from "react-icons/md";
+import { MdOutlineThumbUp, MdThumbUp, MdOutlineThumbDown, MdThumbDown, MdBookmarkBorder, MdBookmark } from "react-icons/md";
 import "./restTile.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RestModal from "../modal/restModal/restModal";
-export default function RestTile({ r, token }) {
-  const [dialogOpen, setDialogOpen] = useState(false)
+
+export default function RestTile({ r, token, save, like, dislike }) {
+  const [dialogOpen, setDialogOpen] = useState(false);
   function handleRateUp(e) {
     e.stopPropagation();
+    like(r._id, !r.userInteraction.liked);
   };
   function handleRateDown(e) {
     e.stopPropagation();
+    dislike(r._id, !r.userInteraction.disliked);
+  };
+  function handleSave(e) {
+    e.stopPropagation();
+    save(r._id, !r.userInteraction.saved);
   };
   return (
     <>
     <div className="restTile" onClick={() => setDialogOpen(true)}>
-      <p className="restTileName">{r.name}</p>
+      <div>
+        <p className="restTileName">{r.name}</p>
+        <button onClick={(e) => handleSave(e)}>{r.userInteraction && r.userInteraction.saved ? <MdBookmark /> : <MdBookmarkBorder />}</button>
+      </div>
       <img src={r.gallery[0]} />
       <div>{r.address}</div>
       <div className="ratings">
-        <button onClick={(e) => handleRateUp(e)}><MdOutlineThumbUp />{r.ratings.up}</button>
-        <p>{r.ratings.up > 0 ? (r.ratings.up / (r.ratings.up + r.ratings.down) * 100) : 0}%</p>
-        <button onClick={(e) => handleRateDown(e)}><MdOutlineThumbDown />{r.ratings.down}</button>
+        <button onClick={(e) => handleRateDown(e)}>{r.userInteraction && r.userInteraction.disliked ? <MdThumbDown /> : <MdOutlineThumbDown />}{r.ratings.down}</button>
+        <p>{r.ratings.up > 0 ? Math.round(r.ratings.up / (r.ratings.up + r.ratings.down) * 100) : 0}%</p>
+        <button onClick={(e) => handleRateUp(e)}>{r.userInteraction && r.userInteraction.liked ? <MdThumbUp /> : <MdOutlineThumbUp />}{r.ratings.up}</button>
       </div>
     </div>
     {dialogOpen &&

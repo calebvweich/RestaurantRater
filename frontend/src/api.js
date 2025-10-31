@@ -49,6 +49,24 @@ export async function getRestList() {
   }
 }
 
+export async function getInteractions() {
+  try {
+    const res = await fetch(`${API_URL}/getRestList/interactions`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+    });
+    if (res.ok) {
+      const rests = await res.json();
+      return rests;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function newReview(restId, text) {
   try {
     const res = await fetch(`${API_URL}/review/new/${restId}`, {
@@ -82,9 +100,9 @@ export async function getRestReviews(restId) {
   }
 }
 
-export async function getUserReviews(userId) {
+export async function getUserReviews() {
   try {
-    const res = await fetch(`${API_URL}/user/${userId}/reviews`, {
+    const res = await fetch(`${API_URL}/user/reviews`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -97,5 +115,53 @@ export async function getUserReviews(userId) {
     }
   } catch (err) {
     console.log(err);
+  }
+}
+
+// Like restaurant
+export async function like(restId, upValue) {
+  try {
+    const res = await fetch(`${API_URL}/rate/${restId}/up/${upValue}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// Dislike restaurant
+export async function dislike(restId, downValue) {
+  try {
+    const res = await fetch(`${API_URL}/rate/${restId}/down/${downValue}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+    return res;
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// Save restaurant
+export async function save(restId, saveValue) {
+  try {
+    const res = await fetch(`${API_URL}/save/${restId}/${saveValue}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+    return res;
+  } catch (err) {
+    console.log(err)
   }
 }
