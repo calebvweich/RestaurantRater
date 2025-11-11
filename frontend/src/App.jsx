@@ -21,11 +21,9 @@ function App() {
   async function getRestaurants() {
     if (token) {
       const res = await getInteractions();
-      console.log(res);
       if (res.ok) {
-        setRestList(res.json());
+        setRestList(await res.json());
       } else if (res.status === 401) {
-        localStorage.removeItem("token");
         setToken(null);
       }
     } else {

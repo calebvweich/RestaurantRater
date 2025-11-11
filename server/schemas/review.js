@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 const reviewSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   restId: { type: mongoose.Schema.Types.ObjectId, ref: "Restaurant", required: true },
+  name: { type: String, required: true },
   text: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }

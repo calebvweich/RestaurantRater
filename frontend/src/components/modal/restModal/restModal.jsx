@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import { capitalize } from "../../../functions";
 import Modal from "../modal";
 import "./restModal.css";
+import { getRestReviews } from "../../../api";
+import Review from "../../review/review";
 export default function RestModal({ close, info, token }) {
+  const [reviewList, setReviewList] = useState([])
+
+  useEffect(() => {
+    const res = getRestReviews(info._id);
+    setReviewList(res)
+  }, [])
+
   return (
     <Modal close={close}>
       <div className="restModalContainer" onClick={(e) => e.stopPropagation()}>
@@ -38,8 +48,15 @@ export default function RestModal({ close, info, token }) {
               </div>
             </div>
             <div className="restModalSection">
-              <div className="review">
-                <textarea />
+              <div className="restModalReviews">
+                {token && <div className="newReview">
+                  <textarea />
+                </div>}
+                <div className="reviewList">
+                  {reviewList.length > 0 && reviewList.map(r => {
+                    <Review r={r} />
+                  })}
+                </div>
               </div>
             </div>
           </div>
