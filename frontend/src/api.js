@@ -58,10 +58,8 @@ export async function getInteractions() {
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
     });
-    if (res.ok) {
-      const rests = await res.json();
-      return rests;
-    }
+    const rests = await res;
+    return rests;
   } catch (err) {
     console.log(err);
   }
