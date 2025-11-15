@@ -3,7 +3,7 @@ import "./restTile.css"
 import { useEffect, useState } from "react";
 import RestModal from "../modal/restModal/restModal";
 
-export default function RestTile({ r, token, save, like, dislike }) {
+export default function RestTile({ r, user, save, like, dislike }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   function handleRateUp(e) {
     e.stopPropagation();
@@ -36,7 +36,7 @@ export default function RestTile({ r, token, save, like, dislike }) {
       <RestModal
         close={() => setDialogOpen(false)}
         info={r}
-        token={token}
+        user={user}
       />
     }
     </>

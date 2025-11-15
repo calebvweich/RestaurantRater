@@ -6,25 +6,25 @@ import RestContainer from './components/restContainer/restContainer'
 import { dislike, getInteractions, getRestList, like, save } from './api'
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(localStorage.getItem("user"));
   const [restList, setRestList] = useState({})
   
   function logout() {
     localStorage.clear();
-    setToken(null);
+    setUser(null);
   }
 
-  function login(token) {
-    setToken(token);
+  function login(user) {
+    setUser(user);
   }
 
   async function getRestaurants() {
-    if (token) {
+    if (user) {
       const res = await getInteractions();
       if (res.ok) {
         setRestList(await res.json());
       } else if (res.status === 401) {
-        setToken(null);
+        setUser(null);
       }
     } else {
       const res = await getRestList();
@@ -54,22 +54,22 @@ function App() {
   }
   
   useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
+    if (user) {
+      localStorage.setItem("user", JSON.parse(user));
     } else {
-      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     }
     getRestaurants();
-  }, [token]);
+  }, [user]);
 
   return (
     <>
-    <Header token={token} logout={logout} validate={login} />
+    <Header user={user} logout={logout} validate={login} />
     <div className="body">
       <Sidebar />
       <RestContainer
         restList={restList}
-        token={token}
+        user={user}
         save={saveRest}
         like={likeRest}
         dislike={dislikeRest}

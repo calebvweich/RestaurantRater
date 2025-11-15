@@ -1,0 +1,13 @@
+.reviewContainer {
+  width: 100%;
+  background: #929292;
+  border-top: 5px solid #242424 !important;
+}
+.reviewText {
+  background: #242424;
+  width: 95%;
+}
+.reviewName {
+  font-style: italic;
+  font-size: .9rem;
+}

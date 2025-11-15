@@ -17,8 +17,8 @@ function Login({ close, validate }) {
     if (username !== "" && password !== "") {
       const res = await login(username.toLowerCase(), password);
       if (res && res.token) {
-        console.log(res.token)
-        validate(res.token);
+        console.log(res)
+        validate(res);
         close();
       } else {
         console.log("Failed: ", res);
@@ -66,7 +66,7 @@ function Register({ close, validate }) {
     } else {
       const res = await register(username.toLowerCase(), name, password);
       if (res && res.token) {
-        validate(res.token)
+        validate(res)
         close();
       } else {
         console.log("Failed: ", res);

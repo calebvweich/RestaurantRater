@@ -1,6 +1,6 @@
 import RestTile from "../restTile/restTile"
 import "./restContainer.css"
-export default function RestContainer({ restList, token, save, like, dislike }) {
+export default function RestContainer({ restList, user, save, like, dislike }) {
   return (
     <div className="restContainer">
       <h2>Closest Restaurants</h2>
@@ -9,7 +9,7 @@ export default function RestContainer({ restList, token, save, like, dislike }) 
           <RestTile
             key={r._id}
             r={r}
-            token={token}
+            user={user}
             save={save}
             like={like}
             dislike={dislike}
